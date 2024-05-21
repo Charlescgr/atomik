@@ -1,0 +1,10 @@
+export { handleCreateStyleClass } from './createStyleClass';
+// export { buildColors } from './buildColors';
+export { lightenDarkenColor } from './lightenDarkenColor';
+export { stringToSlug } from './stringToSlug';
+export { hexToRgb } from './hexToRgb';
+export { generateUUID } from './generateUUID';
+export { fixCharsString } from './fixCharsString';
+export { capitalize } from './capitalize';
+export { IMAGES_WIDTH } from './imagesSizes';
+export { validateEmail } from './validateEmail';

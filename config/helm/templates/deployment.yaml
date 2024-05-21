@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.release.name }}
+  namespace: {{ .Values.release.namespace }}
+  labels:
+    app: {{ .Values.release.name }}
+spec:
+  replicas: {{ .Values.release.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.release.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.release.name }}
+    spec:
+      containers:
+        -
+          image: {{ .Values.release.image }}
+          imagePullPolicy: Always
+          name: {{ .Values.release.name }}
+          ports:
+            - containerPort: {{ .Values.release.serverPort }}
+              name: {{ .Values.release.portName}}
+          env:
+            - name: NODE_ENV
+              value: {{ .Values.release.nodeEnv | quote }}
+            - name: SERVER_PORT
+              value: {{ .Values.release.serverPort | quote }}
+            - name: COMMAND
+              value: {{ .Values.release.command}}
